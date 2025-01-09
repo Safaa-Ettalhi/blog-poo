@@ -97,7 +97,7 @@ class Article {
 public function ajouterCommentaire($conn, $utilisateur_id, $contenu) {
         $commentaire = new Commentaire(null, $this->id, $utilisateur_id, $contenu);
         $commentaire->ajouter($conn);
-        $this->commentaires[] = $commentaire; // Ajout à la collection
+        $this->commentaires[] = $commentaire; 
     }
 
     public function getCommentaires($conn) {
@@ -111,7 +111,7 @@ public function ajouterCommentaire($conn, $utilisateur_id, $contenu) {
         $like = new Like(null, $utilisateur_id, $this->id);
         if (!$like->aLike($conn)) {
             $like->ajouter($conn);
-            $this->likes[] = $like; // Ajout à la collection
+            $this->likes[] = $like; 
         }
     }
 
