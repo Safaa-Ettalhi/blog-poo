@@ -58,6 +58,19 @@ class Commentaire {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getAllCommentsWithDetails($conn) {
+        $query = "SELECT c.id AS comment_id, c.contenu AS comment_content, c.cree_le AS comment_created, 
+                         c.modifie_le AS comment_modified, a.titre AS article_title, u.nom_utilisateur AS username
+                  FROM commentaires c
+                  JOIN articles a ON c.article_id = a.id
+                  LEFT JOIN utilisateurs u ON c.utilisateur_id = u.id
+                  ORDER BY c.cree_le DESC";
+
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>
