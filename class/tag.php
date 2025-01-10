@@ -83,7 +83,7 @@ class Tag {
 
             $tags = [];
             while ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $tags[] = new Tag($data['id'], $data['nom'], $data['description']);
+                $tags[] = new Tag($data['nom'], $data['description'], $data['id']);
             }
             return $tags;
         
