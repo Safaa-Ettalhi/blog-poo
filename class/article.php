@@ -88,7 +88,7 @@ class Article {
 
     if (!$article) {
         echo "Aucun article trouvé pour l'ID " . $articleId . "<br>";
-        return false; // Aucun article trouvé
+        return false; 
     }
 
     return $article;
